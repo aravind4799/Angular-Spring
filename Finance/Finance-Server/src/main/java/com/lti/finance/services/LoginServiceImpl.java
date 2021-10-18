@@ -3,7 +3,7 @@ package com.lti.finance.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lti.finance.controller.LoginDao;
+import com.lti.finance.dao.LoginDao;
 
 
 

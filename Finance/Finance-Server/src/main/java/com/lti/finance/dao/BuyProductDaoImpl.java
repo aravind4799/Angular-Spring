@@ -27,6 +27,59 @@ public class BuyProductDaoImpl implements BuyProductDao {
 		List<BuyProduct> products = (List<BuyProduct>) query.getSingleResult();
 		return products;
 	}
+	
+	
+	@Transactional
+	public double getEmi(int emiScheme,int paidAmount)
+	{
+		double emi=0;
+		if(emiScheme==3)
+		{
+		int rate=3;
+		 emi=paidAmount*rate*(1+rate)*emiScheme/((1+rate)*emiScheme-1);
+		 String sql = "alter table buy_product set AMOUNT_PAID_EMI=:emi where EMI_SCHEME=:emiScheme and PAID_AMOUNT=:paidAmount";
+		 Query query = em.createQuery(sql);
+			query.setParameter("AMOUNT_PAID_EMI",emi);
+			query.setParameter("EMI_SCHEME",3);
+			query.setParameter("PAID_AMOUNT",paidAmount);
+			
+			query.executeUpdate();
+		
+		
+	}
+		else if(emiScheme==6)
+		{
+			int rate=6;
+			emi=paidAmount*rate*(1+rate)*emiScheme/((1+rate)*emiScheme-1);
+			String sql = "alter table buy_product set AMOUNT_PAID_EMI=:emi where EMI_SCHEME=:emiScheme and PAID_AMOUNT=:paidAmount";
+			 Query query = em.createQuery(sql);
+				query.setParameter("AMOUNT_PAID_EMI",emi);
+				query.setParameter("EMI_SCHEME",6);
+				query.setParameter("PAID_AMOUNT",paidAmount);
+				
+				query.executeUpdate();
+			
+			
+		}
+		else if(emiScheme==12)
+		{
+			int rate=12;
+			emi=paidAmount*rate*(1+rate)*emiScheme/((1+rate)*emiScheme-1);
+			String sql = "alter table buy_product set AMOUNT_PAID_EMI=:emi where EMI_SCHEME=:emiScheme and PAID_AMOUNT=:paidAmount";
+			 Query query = em.createQuery(sql);
+				query.setParameter("AMOUNT_PAID_EMI",emi);
+				query.setParameter("EMI_SCHEME",12);
+				query.setParameter("PAID_AMOUNT",paidAmount);
+				
+				query.executeUpdate();
+			
+		}
+		System.out.println(emi);
+		return emi;
 
 
+}
+	
+	
+	
 }

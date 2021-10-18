@@ -1,4 +1,4 @@
-package com.lti.finance.controller;
+package com.lti.finance.dao;
 
 public interface LoginDao{
 

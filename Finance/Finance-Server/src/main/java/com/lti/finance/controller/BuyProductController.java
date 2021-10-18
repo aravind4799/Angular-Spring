@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.finance.beans.BuyProduct;
@@ -34,6 +35,15 @@ public class BuyProductController {
 //	public List<BuyProduct> getProductDetailsById() {
 //		return BuyProductService.getProductList();
 //	}
+	
+	
+	@GetMapping("/{emi_scheme}/{paid_amount}")
+	public double getEmi(@RequestParam("EMI_SCHEME")int emiScheme,@RequestParam("PAID_AMOUNT")int paidAmount)
+	{
+		return BuyProductService.getEmi(emiScheme, paidAmount);
+	}
+	
+	
 	
 	
 

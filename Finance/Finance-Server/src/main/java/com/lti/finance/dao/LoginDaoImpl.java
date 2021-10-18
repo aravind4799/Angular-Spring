@@ -1,4 +1,4 @@
-package com.lti.finance.controller;
+package com.lti.finance.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
