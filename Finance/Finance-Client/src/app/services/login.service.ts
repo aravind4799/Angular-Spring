@@ -6,12 +6,14 @@ import { login_form } from '../shared/login';
   providedIn: 'root'
 })
 export class LoginService {
+  validUserWithId: any;
 
   baseURL: string = "http://localhost:8282/login/login"
   constructor(private httpService: HttpClient) { }
 
   ValidateUser(login: login_form) {
-    return this.httpService.post(this.baseURL, login);
+    this.validUserWithId = this.httpService.post(this.baseURL, login);
+    return this.validUserWithId;
   }
 
 }
