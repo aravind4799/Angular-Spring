@@ -1,6 +1,7 @@
+
 <!--Admin Modal-->
 
-<div #adminLogin class="modal fade" id="adminLogin">
+<div #adminLogin class="modal fade" id="adminLogin" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,7 +10,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="">
+      <form action="" [formGroup]="adminLoginForm">
         <div class="modal-body">
           <div class="form-outline">
             <div class="form-group">

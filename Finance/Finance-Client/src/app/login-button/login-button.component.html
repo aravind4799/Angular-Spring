@@ -3,7 +3,6 @@
   Login
 </button>
 
-
 <!-- Modal -->
 <div #loginPage class="modal fade" id="loginPage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -44,8 +43,7 @@
             </div>
             <div class="form-group">
               <a href="" title="Forgot Password" data-toggle="modal" data-dismiss="modal"
-                data-target="#forgotPassword">Forgot
-                Password?</a><br>
+                data-target="#forgotPassword">Forgot Password?</a><br>
               Not a member yet? <a href="" title="Become A Member." data-target="#registerpage"> Sign Up</a>
             </div>
           </div>
@@ -55,8 +53,7 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-light float-left "><a title="Admin Login" data-toggle="modal" data-dismiss="modal"
-              data-target="#adminLogin">Admin</a></button>
+          <span><a title="Admin Login" data-toggle="modal" data-dismiss="modal" data-target="#adminLogin"><button class="btn btn-light">Admin</button></a></span>
           <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid"  (click)="onSubmit()">Login</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </div>

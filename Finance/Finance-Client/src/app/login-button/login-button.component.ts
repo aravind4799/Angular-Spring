@@ -13,6 +13,7 @@ export class LoginButtonComponent implements OnInit {
   invalidLogin: boolean = false;
   submitted: boolean = false;
   userId: string = "";
+  validUserWithId: any;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
 
@@ -46,8 +47,7 @@ export class LoginButtonComponent implements OnInit {
       return;
     }
 
-    localStorage.setItem(this.userId,this.loginService.validUserWithId);
-    return this.loginService.ValidateUser(loginData).subscribe((data: any) => console.log(data), (error: any) => console.log(error));
-
+    this.loginService.ValidateUser(loginData).subscribe(data =>
+      sessionStorage.setItem("validAdminWithId", JSON.stringify(data)), error => console.log(error));
   }
 }

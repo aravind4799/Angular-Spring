@@ -43,9 +43,7 @@ export class AdminLoginComponent implements OnInit {
     if (this.adminLoginForm.invalid) {
       return;
     }
-    this.adminLoginService.validateAdmin(adminLoginData).subscribe(data => console.log(data), error => console.log(error));
-
+    this.adminLoginService.validateAdmin(adminLoginData).subscribe(data =>
+      sessionStorage.setItem("validAdminWithId", JSON.stringify(data)), error => console.log(error));
   }
 }
-
-  // localStorage.setItem("admin_name", this.adminLoginForm.controls.admin_name.value);

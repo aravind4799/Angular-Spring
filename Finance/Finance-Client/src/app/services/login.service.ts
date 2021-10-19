@@ -12,8 +12,6 @@ export class LoginService {
   constructor(private httpService: HttpClient) { }
 
   ValidateUser(login: login_form) {
-    this.validUserWithId = this.httpService.post(this.baseURL, login);
-    return this.validUserWithId;
+  return this.httpService.post(this.baseURL, login);
   }
-
 }

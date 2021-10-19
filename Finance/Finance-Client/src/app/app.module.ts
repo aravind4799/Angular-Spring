@@ -15,15 +15,17 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FinanceService } from './services/finance.service';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginButtonComponent,
+    AdminLoginComponent,
     ForgotPasswordComponent,
     RegistrationComponent,
     AdminComponent,
-    ProductListComponent,
+    ProductListComponent
 
   ],
   imports: [
