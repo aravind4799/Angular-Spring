@@ -1,13 +1,9 @@
 package com.lti.finance.beans;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,13 +27,6 @@ public class Product {
 	
 	@Column(name="product_description")
 	private String productDescription;
-	
-	
-	//bi-directional mapping with buy-products
-	
-//	@OneToMany(mappedBy="buy_product",cascade = CascadeType.ALL)
-//	private List<BuyProduct> buyProduct;
-
 	
 	public Product() {
 		super();
@@ -91,18 +80,6 @@ public class Product {
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-	
-	
-
-//	public List<BuyProduct> getBuyProduct() {
-//		return buyProduct;
-//	}
-//
-//	public void setBuyProduct(List<BuyProduct> buyProduct) {
-//		this.buyProduct = buyProduct;
-//	}
-//	
-	
 
 	@Override
 	public String toString() {

@@ -23,11 +23,5 @@ public class BuyProductServiceImpl implements BuyProductService {
 		List<BuyProduct> products = dao.getProductListById(userId);
 		return products;
 	}
-	
-	public double getEmi(int emiScheme,int paidAmount)
-	{
-		double emi=dao.getEmi(emiScheme, paidAmount);
-		return emi;
-	}
 
 }

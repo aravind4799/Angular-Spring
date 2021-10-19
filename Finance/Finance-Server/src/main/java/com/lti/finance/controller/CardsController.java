@@ -38,8 +38,6 @@ public class CardsController {
 	public long addProduct(@RequestBody CardDetails card) {
 		return CardDetailsService.addCardDetails(card);
 	}
-	
-	
 
 	
 	
