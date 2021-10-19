@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.lti.finance.beans.Registration;
+
 
 @Repository
 public class ForgotPasswordDaoImpl implements ForgotPasswordDao {
@@ -36,7 +38,7 @@ public class ForgotPasswordDaoImpl implements ForgotPasswordDao {
 	
 	@Override
 	public String forgotPassword(long userId, String newPassword) {
-		String sql = "update Registration set customerPassword=:newPassword where id =:userId";
+		String sql = "update Registration set customerPassword=:newPassword where userId =:userId";
 		Query query = (Query) this.entityManager.createQuery(sql);
 		query.setParameter("newPassword", newPassword);
 		query.setParameter("userId", userId);

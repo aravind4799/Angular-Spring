@@ -31,18 +31,18 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   verifyOTP() {
-    //take the value of otp from session storage(truncate the value after decimal for otp)
-    //compare the value from input and value from session storage
-    //if otp is correct go forward or invalid otp message
-    sessionStorage.getItem()
+//     //take the value of otp from session storage(truncate the value after decimal for otp)
+//     //compare the value from input and value from session storage
+//     //if otp is correct go forward or invalid otp message
+  idAndOtp = sessionStorage.getItem("userIdandOTP");
   }
 
   updatePassword() {
-    //get the userid from session storage (truncate the integer before decimal)
-    let updateData: send_password = {
-      userID: JSON.parse(sessionStorage.getItem('userIdandOTP')),
-      new_password: this.new_password
-    }
-    this.forgotPasswordService.updatePassword(this.updateData).subscribe(data => console.log(data), error => console.log(error));
+//     //get the userid from session storage (truncate the integer before decimal)
+//     let updateData: send_password = {
+//       userID: JSON.parse(sessionStorage.getItem('userIdandOTP')),
+//       new_password: this.new_password
+//     }
+//     this.forgotPasswordService.updatePassword(this.updateData).subscribe(data => console.log(data), error => console.log(error));
   }
 }

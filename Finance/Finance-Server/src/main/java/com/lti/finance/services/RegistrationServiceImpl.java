@@ -2,6 +2,8 @@ package com.lti.finance.services;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,13 +31,20 @@ public class RegistrationServiceImpl implements RegistrationService{
 	
 	
 	public long addUser(Registration e) {
-		
 		System.out.println("inside Service add");
 		return dao.addUser(e);
-		
-		
-		
-		
+
+	}
+
+
+	public List<Registration> viewUsers() {
+		return dao.viewUsers();
+	}
+
+
+	@Override
+	public String approveUser(long userId) {
+		return dao.approveUser(userId);
 	}
 
 

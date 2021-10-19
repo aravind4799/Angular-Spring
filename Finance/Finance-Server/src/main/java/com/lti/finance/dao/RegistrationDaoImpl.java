@@ -1,5 +1,7 @@
 package com.lti.finance.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -32,6 +34,26 @@ public class RegistrationDaoImpl implements RegistrationDao {
 		}
 
 		return e.getUserId();
+	}
+
+	@Override
+	@Transactional
+	public List<Registration> viewUsers() {
+		String sql = "select users from Registration users";
+		Query query = em.createQuery(sql);
+		List<Registration> userList = query.getResultList();
+		return userList;
+	}
+
+	@Override
+	@Transactional
+	public String approveUser(long userId) {
+		String sql = "update Registration set activation=:approve where id =:userId";
+		Query query = (Query) this.em.createQuery(sql);
+		query.setParameter("approve", "true");
+		query.setParameter("userId", userId);
+		query.executeUpdate();
+		return "User Approved";
 	}
 
 }
