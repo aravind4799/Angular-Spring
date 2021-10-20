@@ -35,25 +35,24 @@
             <label class="input-group-text" for="phoneno">Phone Number</label>
             <input id="phoneno" type="number" class="form-control" aria-describedby="basic-addon2"
               formControlName="Phone_no" placeholder="Enter your phone number" name="phoneno"
-              [class.invalid]="f.Phone_no.invalid && f.Phone_no.touched">
+              [class.invalid]="registrationform.get('Phone_no')?.invalid && registrationform.get('Phone_no')?.touched">
           </div>
 
-          <div *ngIf="(registrationform.get('Phone_no')?.dirty ||
-                registrationform.get('Phone_no')?.touched)" class="alert alert-danger">
-            <div *ngIf="registrationform.get('Phone_no')?.errors?.required"> Phone is required</div>
-            <div *ngIf="registrationform.get('Phone_no')?.errors?.minlength">Minimum length of password is 8.</div>
-            <div *ngIf="registrationform.get('Phone_no')?.errors?.maxlength">Maximum length of password is 12.</div>
-            <div *ngIf="registrationform.get('Phone_no')?.errors?.pattern">Invalid Phone Number</div>
+          <div>
+            <div *ngIf="registrationform.get('Phone_no')?.errors?.required && registrationform.get('Phone_no')?.touched" class="alert alert-danger"> Phone is required</div>
+            <div *ngIf="registrationform.get('Phone_no')?.errors?.minlength" class="alert alert-danger">Minimum length of password is 8.</div>
+            <div *ngIf="registrationform.get('Phone_no')?.errors?.maxlength" class="alert alert-danger">Maximum length of password is 12.</div>
+            <div *ngIf="registrationform.get('Phone_no')?.errors?.pattern" class="alert alert-danger">Invalid Phone Number</div>
           </div>
 
           <br><br>
           <div class="input-group">
             <label class="input-group-text" for="email">Email</label><input id="email" type="email" class="form-control"
-              aria-describedby="basic-addon2" formControlName="Email" placeholder="Enter your Email id" name="email">
+              aria-describedby="basic-addon2" formControlName="Email" placeholder="Enter your Email id" name="email"
+              [class.invalid]="registrationform.get('Email')?.invalid && registrationform.get('Email')?.touched">
           </div>
-          <div *ngIf="(registrationform.get('Email')?.dirty ||
-                registrationform.get('Email')?.touched)" class="alert alert-danger">
-            <div *ngIf="registrationform.get('Email')?.errors?.required">Email is not Valid</div>
+          <div >
+            <div *ngIf="registrationform.get('Email')?.errors?.required && registrationform.get('Email')?.touched" class="alert alert-danger">Email is not Valid</div>
             <!-- <a *ngIf="registrationform.get('Email')?.errors?.pattern">Invalid Email</a> -->
           </div>
 
@@ -88,14 +87,14 @@
           <div class="input-group">
             <label class="input-group-text" for="password">Password</label>
             <input id="password" type="password" class="form-control" aria-describedby="basic-addon2"
-              formControlName="password" placeholder="Enter your password" name="password">
+              formControlName="password" placeholder="Enter your password" name="password"
+              [class.invalid]="registrationform.get('password')?.invalid && registrationform.get('password')?.touched">
           </div>
 
-          <div *ngIf="(registrationform.get('password')?.dirty ||
-                registrationform.get('password')?.touched)" class="alert alert-danger">
-            <div *ngIf="registrationform.get('password')?.errors?.required"> Password is required</div>
-            <div *ngIf="registrationform.get('password')?.errors?.minlength">Minimum length of password is 8.</div>
-            <div *ngIf="registrationform.get('password')?.errors?.maxlength">Maximum length of password is 20.</div>
+          <div >
+            <div *ngIf="registrationform.get('password')?.errors?.required && registrationform.get('password')?.touched" class="alert alert-danger"> Password is required</div>
+            <div *ngIf="registrationform.get('password')?.errors?.minlength" class="alert alert-danger">Minimum length of password is 8.</div>
+            <div *ngIf="registrationform.get('password')?.errors?.maxlength" class="alert alert-danger">Maximum length of password is 20.</div>
           </div>
 
           <br><br>
@@ -103,20 +102,14 @@
           <div class="input-group">
             <label class="input-group-text" for="confirmpassword">Confirm Password</label><input id="confirmpassword"
               type="password" class="form-control" aria-describedby="basic-addon2" formControlName="confirmpassword"
-              placeholder="confirm password" name="confirmpassword">
+              placeholder="confirm password" name="confirmpassword"
+              [class.invalid]="registrationform.get('confirmpassword')?.invalid && registrationform.get('confirmpassword')?.touched"
+              >
           </div>
 
 
 
-          <div *ngIf="(registrationform.get('confirmpassword')?.dirty ||
-              registrationform.get('confirmpassword')?.touched)" class="alert alert-danger">
-            <a *ngIf="registrationform.get('confirmpassword')?.errors?.required"> Password is required</a>
-            <a *ngIf="registrationform.get('confirmpassword')?.errors?.required"> Password is required</a>
-            <a *ngIf="registrationform.get('confirmpassword')?.errors?.minlength">Minimum length of password is 8.</a>
-            <a *ngIf="registrationform.get('confirmpassword')?.errors?.maxlength">Maximum length of password is 20.</a>
-            <a *ngIf="registrationform.get('confirmpassword')?.errors?.pattern">Invalid Password</a>
-
-          </div>
+          
 
           <br><br>
 
@@ -124,6 +117,7 @@
             <label class="input-group-text" for="cardType">CardType</label>
             <select placeholder="select Your card type" id="cardType" name="cardType" formControlName="cardType"
               class="form-control">
+              <option value="" disabled selected>select Your card type</option>
               <option>Gold</option>
               <option>Titanium</option>
             </select>
@@ -137,6 +131,7 @@
           <div class="input-group ">
             <label class="input-group-text" for="bank">Bank</label>
             <select placeholder="select bank" id="bank" name="bank" formControlName="bank" class="form-control">
+              <option value="" disabled selected>Select Bank</option>
               <option>IDBI</option>
               <option>ICICI</option>
               <option>State Bank of India</option>
@@ -157,14 +152,15 @@
           <div class="input-group">
             <label class="input-group-text" for="acctno">Account Number</label><input id="accntno" type="number"
               class="form-control" aria-describedby="basic-addon2" formControlName="accountno"
-              placeholder="Enter Account number" name="accntno">
+              placeholder="Enter Account number" name="accntno"
+              [class.invalid]="registrationform.get('accountno')?.invalid && registrationform.get('accountno')?.touched"
+              >
           </div>
 
-          <div *ngIf="(registrationform.get('accountno')?.dirty ||
-              registrationform.get('accountno')?.touched)" class="alert alert-danger">
-            <div *ngIf="registrationform.get('accountno')?.errors?.required"> Account number is required</div>
-            <div *ngIf="registrationform.get('accountno')?.errors?.minlength">Invalid account number</div>
-            <div *ngIf="registrationform.get('accountno')?.errors?.maxlength">Invalid account number</div>
+          <div >
+            <div *ngIf="registrationform.get('accountno')?.errors?.required && registrationform.get('accountno')?.touched" class="alert alert-danger"> Account number is required</div>
+            <div *ngIf="registrationform.get('accountno')?.errors?.minlength" class="alert alert-danger">Invalid account number</div>
+            <div *ngIf="registrationform.get('accountno')?.errors?.maxlength"  class="alert alert-danger">Invalid account number</div>
           </div>
 
           <br><br>
@@ -179,10 +175,10 @@
               registrationform.get('ifsc')?.touched)" class="alert alert-danger">
             <div *ngIf="registrationform.get('ifsc')?.errors?.required"> IFSC code is required</div>
           </div>
-        </div>
+        
         <br><br>
 
-        <h2>Your Payment Information</h2>
+        <h2>Your Payment Information</h2><br><br>
         <div class="input-group">
           <label class="input-group-text" for="owner">Owner</label><input id="owner" type="text" class="form-control"
             aria-describedby="basic-addon2" formControlName="owner" placeholder="Enter Owner" name="Owner">
@@ -192,6 +188,7 @@
                  registrationform.get('owner')?.touched)" class="alert alert-danger">
           Owner is required.
         </div><br><br>
+      
 
         <div class="input-group">
           <label class="input-group-text" for="cvv">CVV</label><input id="cvv" type="number" class="form-control"
@@ -227,15 +224,27 @@
                        registrationform.get('expiry')?.touched)" class="alert alert-danger">
           Enter Date.
         </div><br><br>
+      
+        <div>
+          <input type="file" name="payslip" ng2FileSelect [uploader]="uploader" >
+      
+      <button type="button" class="btn btn-success btn-s" 
+        (click)="uploader.uploadAll()" 
+        [disabled]="!uploader.getNotUploadedItems().length" >
+            Upload Your Pay Slip
+      </button>
+          </div>
+
         <div class="form-group">
           <button type="button" data-dismiss="modal" class="btn btn-link" data-toggle="modal" data-target="#loginPage">
             <!--change data target here-->
             Already Registered?
           </button>
         </div>
-        <div class="modal-footer">
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary" (click)="submit()">Register</button>
+      </div>
+        <div class="modal-footer" >
+          <div class="form-group" >
+            <button type="submit" class="btn btn-primary" (click)="submit()" data-dismiss="modal" data-toggle="modal" data-target="#loginPage">Register</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button><br><br>
           </div>
         </div>
@@ -243,4 +252,5 @@
     </div>
   </div>
 </div>
+
 

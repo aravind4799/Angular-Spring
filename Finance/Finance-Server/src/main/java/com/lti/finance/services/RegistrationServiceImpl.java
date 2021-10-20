@@ -2,10 +2,12 @@ package com.lti.finance.services;
 
 
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lti.finance.beans.Registration;
 import com.lti.finance.dao.RegistrationDao;
@@ -57,6 +59,11 @@ public class RegistrationServiceImpl implements RegistrationService{
 	public String deleteUser(long userId) {
 		return dao.deleteUser(userId);
 	}
+	
+	public void upload(MultipartFile file) throws IOException {
+		dao.upload(file);
+			
+		}
 
 }
 

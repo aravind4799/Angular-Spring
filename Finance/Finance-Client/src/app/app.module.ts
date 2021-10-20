@@ -22,6 +22,7 @@ import { CarddetailsComponent } from './carddetails/carddetails.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { UserActivationComponent } from './user-activation/user-activation.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     AdminLoginComponent,
     NavbarComponent,
     UserActivationComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
     CarddetailsComponent,
     HomePageComponent,
     UserActivationComponent
@@ -50,6 +51,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     MatFormFieldModule,
     MatIconModule,
     AppRoutingModule,
+    FileUploadModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],

@@ -1,5 +1,7 @@
 package com.lti.finance.dao;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +10,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lti.finance.beans.Registration;
 
@@ -73,6 +76,10 @@ public class RegistrationDaoImpl implements RegistrationDao {
 		query.setParameter("id", id);
 		String res = (String) query.getSingleResult().toString();
 		return Boolean.parseBoolean(res);
+	}
+	
+	public void upload(MultipartFile file) throws IOException {
+		 file.transferTo(new File("E:\\File_Uploaded\\"+file.getOriginalFilename()));
 	}
 
 }
