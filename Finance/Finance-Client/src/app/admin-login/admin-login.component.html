@@ -31,7 +31,7 @@
               </div>
             </div>
             <div>
-              <div class="alert alert-danger" *ngIf="adminFormValidation.admin_password?.errors?.required"> Password cannot be empty.</div>
+              <div class="alert alert-danger" *ngIf="adminFormValidation.admin_password?.errors?.required && adminFormValidation.password.touched"> Password cannot be empty.</div>
               <div class="alert alert-danger" *ngIf="adminFormValidation.admin_password?.errors?.minlength">Minimum length of password is 8.</div>
               <div class="alert alert-danger" *ngIf="adminFormValidation.admin_password?.errors?.maxlength">Maximum length of password is 12.</div>
             </div>

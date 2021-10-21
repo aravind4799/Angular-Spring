@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ForgotPasswordService } from '../services/forgot-password.service';
@@ -17,30 +17,39 @@ export class ForgotPasswordComponent implements OnInit {
   confirm_password: string = "";
   userIdandOTP: string = "";
   temp: string = "";
-  otp: number = 0;
+  otp: string = "";
   wrongOTP: boolean = false;
   enableVerify: boolean = true;
   valid: boolean = false;
   notValidEmail: boolean = false;
   enableOTPbutton: boolean = false;
+  fieldTextType: boolean = false;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private forgotPasswordService: ForgotPasswordService) { }
 
   ngOnInit(): void {
   }
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  Form = this._formBuilder.group({
+    new_password: new FormControl('', [Validators.required]),
+    confirm_password: new FormControl('', [Validators.required, Validators.minLength(8),Validators.pattern(this.new_password)])
+  })
 
   sendOTPActionButton() {
     this.forgotPasswordService.sendOTPActionButton(this.email).subscribe(data =>
       sessionStorage.setItem("userIdandOTP", JSON.stringify(data)), error => console.log(error));
     let res: string = JSON.stringify(sessionStorage.getItem("userIdandOTP"));
     // console.log(typeof(res))
-    // console.log(res)
-    if (res) {
-      this.notValidEmail = true;
+    console.log(res)
+    if (sessionStorage.getItem('userIdandOTP')==='null' || sessionStorage.getItem('userIdandOTP')===null) {
+      this.enableOTPbutton = false;
       console.log("if")
     }
     else {
-      this.enableOTPbutton = false;
+      this.notValidEmail = true;
       console.log("else")
     }
   }
@@ -50,11 +59,11 @@ export class ForgotPasswordComponent implements OnInit {
     let res = JSON.stringify(sessionStorage.getItem("userIdandOTP"));
     if (res != "") {
       let userId = parseInt(sessionStorage.getItem("userIdandOTP")!.split('.')[0]);
-      let otpId = parseInt(sessionStorage.getItem("userIdandOTP")!.split('.')[1]);
+      let otpId = sessionStorage.getItem("userIdandOTP")!.split('.')[1];
       console.log(userId);
       console.log(otpId);
 
-      if (otpId === this.otp) {
+      if (otpId == this.otp) {
         this.enableVerify = false;
         this.valid = true;
       }
@@ -69,7 +78,6 @@ export class ForgotPasswordComponent implements OnInit {
 
     if (res != "") {
       let userId = parseInt(sessionStorage.getItem("userIdandOTP")!.split('.')[0]);
-
       let data: send_password;
       data = {
         userId: userId,
@@ -77,6 +85,7 @@ export class ForgotPasswordComponent implements OnInit {
       }
       console.log(data);
       this.forgotPasswordService.updatePassword(data).subscribe(data => console.log(data), error => console.log(error));
+      sessionStorage.removeItem("userIdandOTP");
       Swal.fire('Thank you...', 'Your password was changed succesfully!', 'success');
     }
   }

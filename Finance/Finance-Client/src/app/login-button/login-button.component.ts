@@ -55,7 +55,23 @@ export class LoginButtonComponent implements OnInit {
         sessionStorage.setItem("validUserWithId",JSON.stringify(data))
         console.log(data);
         this.router.navigateByUrl("/product")
-        // this.togglebuttons.emit("FALSE");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully'
+        })
+        sessionStorage.setItem("loginDone","true")
       }
       else{
         Swal.fire(

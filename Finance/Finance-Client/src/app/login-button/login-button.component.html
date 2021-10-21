@@ -31,16 +31,16 @@
             <div class="form-group">
               <div class="input-group">
                 <input id="password" [type]="fieldTextType ? 'text' : 'password'" class="form-control"
-                  formControlName="password" placeholder="Password" name="password" minlength="8" maxlength="12"
+                  formControlName="password" placeholder="Password" name="password" minlength="8" maxlength="20"
                   [class.invalid]="formValidation.password.invalid && formValidation.password.touched" required />
                 <span class="input-group-btn"><button class="btn btn-outline-secondary"
                     (click)="toggleFieldTextType()">{{fieldTextType ?
                     'Hide Password' : 'Show Password'}}</button></span>
               </div>
               <div >
-                <div class="alert alert-danger" *ngIf="formValidation.password?.errors?.required"> Password is not Valid</div>
+                <div class="alert alert-danger" *ngIf="formValidation.password?.errors?.required && formValidation.password.touched"> Password is required</div>
                 <div class="alert alert-danger" *ngIf="formValidation.password?.errors?.minlength">Minimum length of password is 8.</div>
-                <div class="alert alert-danger" *ngIf="formValidation.password?.errors?.maxlength">Maximum length of password is 12.</div>
+                <div class="alert alert-danger" *ngIf="formValidation.password?.errors?.maxlength">Maximum length of password is 20.</div>
               </div>
             </div>
             <div class="form-group">

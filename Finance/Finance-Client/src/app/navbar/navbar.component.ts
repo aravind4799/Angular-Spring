@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn: string = 'TRUE';
+  loginUser: string = JSON.stringify(sessionStorage.getItem("loginDone"));
+  removeLogin: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+    if(this.loginUser==='true'){
+      this.removeLogin = false;
+    }
   }
 
   handle_event =($event:string)=>{
