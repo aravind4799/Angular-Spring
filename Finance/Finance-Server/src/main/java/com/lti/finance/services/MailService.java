@@ -18,7 +18,7 @@ public class MailService {
 		this.javaMailSender = javaMailSender;
 	}
 
-	// once Id is generated user get mail with id number
+	// the user will get an email with an OTP for changing password
 	public void sendEmailForOTP(String email, long OTP) throws MailException {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(email);
@@ -27,7 +27,7 @@ public class MailService {
 		javaMailSender.send(mail);
 	}
 
-	
+	// on successful registration, Id is generated and user gets mail with id number
 	public void sendEmailForConfirmation(Registration registration) throws MailException {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(registration.getCustomerEmail());

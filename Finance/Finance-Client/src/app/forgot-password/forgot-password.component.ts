@@ -23,10 +23,15 @@ export class ForgotPasswordComponent implements OnInit {
   valid: boolean = false;
   notValidEmail: boolean = false;
   enableOTPbutton: boolean = false;
+  fieldTextType: boolean = false;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private forgotPasswordService: ForgotPasswordService) { }
 
   ngOnInit(): void {
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   sendOTPActionButton() {

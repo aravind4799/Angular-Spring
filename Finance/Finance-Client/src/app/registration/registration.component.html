@@ -99,10 +99,10 @@
 
           <br><br>
 
-          
 
 
-          
+
+
 
           <br><br>
 
@@ -168,7 +168,7 @@
             <div *ngIf="registrationform.get('ifsc')?.errors?.required && registrationform.get('accountno')?.touched" class="alert alert-danger" > IFSC code is required</div>
             <div *ngIf="registrationform.get('ifsc')?.errors?.pattern" class="alert alert-danger">Invalid IFSC code</div>
           </div>
-        
+
         <br><br>
 
         <h2>Your Payment Information</h2><br><br>
@@ -181,7 +181,7 @@
                  registrationform.get('owner')?.touched)" class="alert alert-danger">
           Owner is required.
         </div><br><br>
-      
+
 
         <div class="input-group">
           <label class="input-group-text" for="cvv">CVV</label><input id="cvv" type="number" class="form-control"
@@ -217,12 +217,12 @@
                        registrationform.get('expiry')?.touched)" class="alert alert-danger">
           Enter Date.
         </div><br><br>
-      
+
         <div>
           <input type="file" name="payslip" ng2FileSelect [uploader]="uploader" >
-      
-      <button type="button" class="btn btn-success btn-s" 
-        (click)="uploader.uploadAll()" 
+
+      <button type="button" class="btn btn-success btn-s"
+        (click)="uploader.uploadAll()"
         [disabled]="!uploader.getNotUploadedItems().length" >
             Upload Your Pay Slip
       </button>
@@ -237,8 +237,8 @@
       </div>
         <div class="modal-footer" >
           <div class="form-group" >
-            <button type="submit" class="btn btn-primary" (click)="submit()" data-dismiss="modal" data-toggle="modal" data-target="#loginPage">Register</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"[disabled]="registrationform.invalid">Cancel</button><br><br>
+            <button type="submit" class="btn btn-primary" (click)="submit()" [disabled]="registrationform.invalid" data-dismiss="modal" data-toggle="modal" data-target="#loginPage">Register</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button><br><br>
           </div>
         </div>
       </form>
